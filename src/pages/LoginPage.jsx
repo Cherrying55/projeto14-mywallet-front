@@ -36,9 +36,9 @@ export default function LoginPage(){
         <Container>
         <h1>MyWallet</h1>
         <form onSubmit={fazerlogin}>
-            <input type="email" name="email" placeholder="E-mail" onChange={alterardados} />
-            <input type="password" name="password" placeholder="Senha" onChange={alterardados} />
-            <button type="submit">Entrar</button>
+            <input data-test="email" type="email" name="email" placeholder="E-mail" onChange={alterardados} />
+            <input data-test="password" type="password" name="password" placeholder="Senha" onChange={alterardados} />
+            <button data-test="sign-in-submit" type="submit">Entrar</button>
         </form>
         <Link to="/sign-up">
             Primeira vez? Cadastre-se!

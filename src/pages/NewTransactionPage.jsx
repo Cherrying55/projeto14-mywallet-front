@@ -40,11 +40,11 @@ export default function NewEntryPage(){
     }
     return(
         <>
-        <h2>Nova entrada</h2>
+        <h2>Nova {tipo}</h2>
         <form onSubmit={enviarentrada}>
-            <input type="text" name="value" placeholder="Valor" onChange={alterardados} />
-            <input type="text" name="decription" placeholder="Descrição" onChange={alterardados} />
-            <button type="submit">Salvar entrada</button>
+            <input data-test="registry-amount-input" type="text" name="value" placeholder="Valor" onChange={alterardados} />
+            <input data-test="registry-name-input" type="text" name="decription" placeholder="Descrição" onChange={alterardados} />
+            <button data-test="registry-save" type="submit">Salvar {tipo}</button>
         </form>
         </>
     )

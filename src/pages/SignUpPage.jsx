@@ -42,11 +42,11 @@ export default function SignUpPage(){
         <Container>
         <h1>MyWallet</h1>
         <form onSubmit={fazerlogin}>
-            <input type="text" name="name" placeholder="Nome" onChange={alterardados} />
-            <input type="email" name="email" placeholder="E-mail" onChange={alterardados} />
-            <input type="password" name="password" placeholder="Senha" onChange={alterardados} />
-            <input type="password" name="confirmpassword" placeholder="Confirme a senha" onChange={alterardados} />
-            <button type="submit">Cadastrar</button>
+            <input data-test="name" type="text" name="name" placeholder="Nome" onChange={alterardados} />
+            <input data-test="email" type="email" name="email" placeholder="E-mail" onChange={alterardados} />
+            <input data-test="password" type="password" name="password" placeholder="Senha" onChange={alterardados} />
+            <input data-test="conf-password" type="password" name="confirmpassword" placeholder="Confirme a senha" onChange={alterardados} />
+            <button data-test="sign-up-submit" type="submit">Cadastrar</button>
         </form>
         <Link to="/">
             Já tem uma conta? Entre agora!

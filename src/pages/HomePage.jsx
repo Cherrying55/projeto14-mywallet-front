@@ -54,7 +54,7 @@ export default function HomePage(){
     return(
         <Container>
         <NewEntryHeader>
-            <h2>Olá, {auth.nome}</h2>
+            <h2 data-test="user-name">Olá, {auth.nome}</h2>
             <ion-icon name="exit-outline" onClick={logout}></ion-icon>
         </NewEntryHeader>
         <BigContainer>
@@ -70,15 +70,15 @@ export default function HomePage(){
             </RegistryContainer>
             <Saldo resultado={soma(positivos,negativos)}>
                 <h3>SALDO</h3>
-                <span>{soma(positivos,negativos)}</span>
+                <span data-test="total-amount">{soma(positivos,negativos)}</span>
             </Saldo>
         </BigContainer>
         <ButtonContainer>
-            <button onClick={() => {navigate("/newentry")}}>
+            <button data-test="new-income" onClick={() => {navigate("/novatransacao/entrada")}}>
                 <ion-icon name="add-circle-outline"></ion-icon>
                 <h4>Nova entrada</h4>
             </button>
-            <button onClick={() => {navigate("/newexit")}}>
+            <button data-test="new-expense" onClick={() => {navigate("/novatransacao/saida")}}>
                 <ion-icon name="remove-circle-outline"></ion-icon>
                 <h4>Nova saída</h4>
             </button>

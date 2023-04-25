@@ -6,9 +6,9 @@ export default function Registry(props){
         <RegContainer>
             <div>
             <h3>{props.day}</h3>
-            <h2>{props.description}</h2>
+            <h2 data-test="registry-name">{props.description}</h2>
             </div>
-            <Valor type={props.type}>{props.value}</Valor>
+            <Valor  data-test="registry-amount" type={props.type}>{props.value}</Valor>
         </RegContainer>
     )
 }
