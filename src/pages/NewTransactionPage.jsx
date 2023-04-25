@@ -1,13 +1,20 @@
 import axios from "axios";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
 
 
 export default function NewEntryPage(){
-
-    const [dados, setDados] = useState({value: "", description: "", type: "entrada"});
+    const { tipo } = useParams();
+    const [dados, setDados] = useState({value: "", description: "", type: tipo});
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const { auth } = useContext(AuthContext)
+    
+    if(!auth.token){
+        navigate("/")
+    }
 
     function alterardados(e){
         const newobj = {...dados};

@@ -14,6 +14,12 @@ export default function HomePage(){
     const [ positivos, setPositivos] = useState("");
     const [ negativos, setNegativos] = useState("");
 
+    if(!auth.token){
+        navigate("/")
+    }
+
+    
+
     useEffect(() => {
         axios.get("https://mywallet-api-b8n4.onrender.com/transactions", {headers:{
             "Authorization": `Bearer ${auth.token}`
