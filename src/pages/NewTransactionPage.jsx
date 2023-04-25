@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
 
 
-export default function NewEntryPage(){
+export default function NewTransactionPage(){
     const { tipo } = useParams();
     const [dados, setDados] = useState({value: "", description: "", type: tipo});
     const [loading, setLoading] = useState(false);

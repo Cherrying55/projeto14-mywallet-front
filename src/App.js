@@ -2,8 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
-import NewExitPage from "./pages/NewExitPage.jsx";
-import NewEntryPage from "./pages/NewTransactionPage.jsx";
+import NewTransactionPage from "./pages/NewTransactionPage.jsx";
 import GlobalStyle from "./assets/GlobalStyle.jsx";
 import { AuthProvider } from "./contexts/AuthContext";
 
