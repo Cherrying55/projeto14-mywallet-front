@@ -7,6 +7,7 @@ import AuthContext from "../contexts/AuthContext";
 
 export default function NewTransactionPage(){
     const { tipo } = useParams();
+    console.log(tipo);
     const [dados, setDados] = useState({value: "", description: "", type: tipo});
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -25,6 +26,7 @@ export default function NewTransactionPage(){
     function enviarentrada(e){
         setLoading(true);
         e.preventDefault();
+        console.log(dados)
         axios.post(`https://mywallet-api-b8n4.onrender.com/transactions`,dados, {headers:{
             "Authorization": `Bearer ${auth.token}`
         }})
@@ -43,7 +45,7 @@ export default function NewTransactionPage(){
         <h2>Nova {tipo}</h2>
         <form onSubmit={enviarentrada}>
             <input data-test="registry-amount-input" type="text" name="value" placeholder="Valor" onChange={alterardados} />
-            <input data-test="registry-name-input" type="text" name="decription" placeholder="Descrição" onChange={alterardados} />
+            <input data-test="registry-name-input" type="text" name="description" placeholder="Descrição" onChange={alterardados} />
             <button data-test="registry-save" type="submit">Salvar {tipo}</button>
         </form>
         </>

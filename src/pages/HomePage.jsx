@@ -26,8 +26,8 @@ export default function HomePage(){
         }})
         .then(
             (res) => {setTransactions(res.data);
-                setPositivos(transactions.filter(r => r.type === "entrada"));
-                setNegativos(transactions.filter(r => r.type === "saida"));
+                setPositivos(res.data.filter(r => r.type === "entrada"));
+                setNegativos(res.data.filter(r => r.type === "saida"));
             }
         )
         .catch(
@@ -43,10 +43,10 @@ export default function HomePage(){
     function soma (positivos,negativos){
         let soma = 0;
         for(const i of positivos){
-            soma = soma + i.value;
+            soma = soma + parseFloat(i.value);
         }
         for(const i of negativos){
-            soma = soma - i.value;
+            soma = soma - parseFloat(i.value);
         }
         return soma.toFixed(2);
     }
@@ -64,9 +64,6 @@ export default function HomePage(){
                         (t) => <Registry day={t.day} description={t.description} value={t.value} type={t.type} />
                     )
                 }
-                 <Registry day={"30/11"} description={"Almoço mãe"} value={"39.90"} type={"entry"} />
-                 <Registry day={"30/11"} description={"Almoço mãe"} value={"39.90"} type={"exit"} />
-               
             </RegistryContainer>
             <Saldo resultado={soma(positivos,negativos)}>
                 <h3>SALDO</h3>
@@ -74,11 +71,11 @@ export default function HomePage(){
             </Saldo>
         </BigContainer>
         <ButtonContainer>
-            <button data-test="new-income" onClick={() => {navigate("/novatransacao/entrada")}}>
+            <button data-test="new-income" onClick={() => {navigate("/novatransaçao/entrada")}}>
                 <ion-icon name="add-circle-outline"></ion-icon>
                 <h4>Nova entrada</h4>
             </button>
-            <button data-test="new-expense" onClick={() => {navigate("/novatransacao/saida")}}>
+            <button data-test="new-expense" onClick={() => {navigate("/novatransaçao/saida")}}>
                 <ion-icon name="remove-circle-outline"></ion-icon>
                 <h4>Nova saída</h4>
             </button>

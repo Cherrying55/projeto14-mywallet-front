@@ -8,7 +8,11 @@ export default function LoginPage(){
     const [dados, setDados] = useState({email: "", password: ""});
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
+    const { auth, login } = useContext(AuthContext);
+
+    if(auth.token){
+        navigate("/home")
+    }
 
 
     function fazerlogin(e){
@@ -17,8 +21,11 @@ export default function LoginPage(){
         axios.post("https://mywallet-api-b8n4.onrender.com/sign-in", dados)
         .then(
             (res) => {
-                navigate("/home");
                 login(res.data);
+                console.log(res.data);
+                navigate("/home");
+                
+            
             }
         )
         .catch(
