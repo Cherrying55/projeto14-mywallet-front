@@ -5,14 +5,17 @@ import styled from "styled-components";
 
 
 export default function SignUpPage(){
-    const [dados, setDados] = useState({name: "", email: "", password: "", confirmpassword: ""});
+    const [dados, setDados] = useState({nome: "", email: "", password: "", confirmpassword: ""});
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     function fazerlogin(e){
         e.preventDefault();
         setLoading(true);
-        axios.post("https://localhost:5000/sign-up", dadossemconfirm)
+        if(dados.confirmpassword === dados.password){
+            let dadossemconfirm = {...dados};
+            delete dadossemconfirm.confirmpassword;
+            axios.post("https://localhost:5000/sign-up", dadossemconfirm)
         .then(
             (res) => {
                 navigate("/");
@@ -21,6 +24,12 @@ export default function SignUpPage(){
         .catch(
             () => {setLoading(false)}
         )
+        }
+        else{
+            setLoading(false);
+            alert("Confirme a senha corretamente")
+        }
+        
     }
 
     function alterardados(e){

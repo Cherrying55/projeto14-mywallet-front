@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function NewEntryPage(){
 
-    const [dados, setDados] = useState({value: "", description: ""});
+    const [dados, setDados] = useState({value: "", description: "", type: "entrada"});
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ export default function NewEntryPage(){
     function enviarentrada(e){
         setLoading(true);
         e.preventDefault();
-        axios.post(`https://localhost:5000/users/${auth.id}/entries`,dados, {headers:{
+        axios.post(`https://localhost:5000/transactions`,dados, {headers:{
             "Authorization": `Bearer ${auth.token}`
         }})
         .then(

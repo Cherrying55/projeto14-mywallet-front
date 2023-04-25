@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function NewExitPage(){
 
-    const [dados, setDados] = useState({value: "", description: ""});
+    const [dados, setDados] = useState({value: "", description: "", type: "saida"});
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ export default function NewExitPage(){
     function enviarsaida(e){
         setLoading(true);
         e.preventDefault();
-        axios.post(`https://localhost:5000/users/${auth.id}/exits`, dados, {headers:{
+        axios.post(`https://localhost:5000/transactions`, dados, {headers:{
             "Authorization": `Bearer ${auth.token}`
         }})
         .then(

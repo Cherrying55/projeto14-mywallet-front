@@ -1,20 +1,24 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
+import AuthContext from "../contexts/AuthContext";
 
 export default function LoginPage(){
     const [dados, setDados] = useState({email: "", password: ""});
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
+
 
     function fazerlogin(e){
         e.preventDefault();
         setLoading(true);
-        axios.post("https://localhost:5000/users", dados)
+        axios.post("https://localhost:5000/sign-in", dados)
         .then(
             (res) => {
                 navigate("/home");
+                login(res.data);
             }
         )
         .catch(

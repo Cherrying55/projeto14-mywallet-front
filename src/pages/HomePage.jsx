@@ -8,23 +8,27 @@ export default function HomePage(){
 
     const [saldo, setSaldo] = useState(0);
     const navigate = useNavigate();
+    const [transactions, setTransactions] = useState([]);
+    const { auth } = useContext(AuthContext);
+    const [ positivos, setPositivos] = useState("");
+    const [ negativos, setNegativos] = useState("");
 
-    const auth = {
-        registry: [
-            {type: "entry", value: 10},
-            {type: "entry", value: 20},
-            {type: "entry", value: 10},
-            {type: "entry", value: 20},
-            {type: "exit", value: 5},
-            {type: "exit", value: 15},
-            {type: "exit", value: 5},
-            {type: "exit", value: 15},
+    useEffect(() => {
+        axios.get("https://localhost:5000/transactions/all", {headers:{
+            "Authorization": `Bearer ${auth.token}`
+        }})
+        .then(
+            (res) => {setTransactions(res.data);
+                setPositivos(transactions.filter(r => r.type === "entrada"));
+                setNegativos(transactions.filter(r => r.type === "saida"));
+            }
+        )
+        .catch(
+            (err) =>  {alert("erro!")}
+        )
+    }, [])
 
-        ]
-    }
-
-    const positivos = auth.registry.filter(r => r.type === "entry");
-    const negativos = auth.registry.filter(r => r.type === "exit");
+    
     
     function soma (positivos,negativos){
         let soma = 0;
@@ -40,11 +44,16 @@ export default function HomePage(){
     return(
         <Container>
         <NewEntryHeader>
-            <h2>Olá, Julia</h2>
+            <h2>Olá, {auth.nome}</h2>
             <ion-icon name="exit-outline"></ion-icon>
         </NewEntryHeader>
         <BigContainer>
             <RegistryContainer>
+                {
+                    transactions.map(
+                        (t) => <Registry day={t.day} description={t.description} value={t.value} type={t.type} />
+                    )
+                }
                  <Registry day={"30/11"} description={"Almoço mãe"} value={"39.90"} type={"entry"} />
                  <Registry day={"30/11"} description={"Almoço mãe"} value={"39.90"} type={"exit"} />
                
