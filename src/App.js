@@ -5,11 +5,13 @@ import SignUpPage from "./pages/SignUpPage.jsx";
 import NewExitPage from "./pages/NewExitPage.jsx";
 import NewEntryPage from "./pages/NewEntryPage.jsx";
 import GlobalStyle from "./assets/GlobalStyle.jsx";
+import { AuthProvider } from "./contexts/AuthContext";
 
 export default function App(){
     return(
         <>
         <GlobalStyle />
+        <AuthProvider>
         <BrowserRouter>
         <Routes>
             <Route path="/" element={<LoginPage />} />
@@ -19,6 +21,7 @@ export default function App(){
             <Route path="/sign-up" element={<SignUpPage />} />
         </Routes>
         </BrowserRouter>
+        </AuthProvider>
         </>
     )
 }

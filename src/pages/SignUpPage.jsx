@@ -46,7 +46,7 @@ export default function SignUpPage(){
             <input type="email" name="email" placeholder="E-mail" onChange={alterardados} />
             <input type="password" name="password" placeholder="Senha" onChange={alterardados} />
             <input type="password" name="confirmpassword" placeholder="Confirme a senha" onChange={alterardados} />
-            <button type="submit">Entrar</button>
+            <button type="submit">Cadastrar</button>
         </form>
         <Link to="/">
             Já tem uma conta? Entre agora!
