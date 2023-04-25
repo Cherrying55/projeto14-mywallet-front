@@ -17,7 +17,7 @@ export default function NewExitPage(){
     function enviarsaida(e){
         setLoading(true);
         e.preventDefault();
-        axios.post(`https://localhost:5000/transactions`, dados, {headers:{
+        axios.post(`https://mywallet-api-b8n4.onrender.com/transactions`, dados, {headers:{
             "Authorization": `Bearer ${auth.token}`
         }})
         .then(

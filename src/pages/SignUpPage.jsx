@@ -15,7 +15,7 @@ export default function SignUpPage(){
         if(dados.confirmpassword === dados.password){
             let dadossemconfirm = {...dados};
             delete dadossemconfirm.confirmpassword;
-            axios.post("https://localhost:5000/sign-up", dadossemconfirm)
+            axios.post("https://mywallet-api-b8n4.onrender.com/sign-up", dadossemconfirm)
         .then(
             (res) => {
                 navigate("/");
