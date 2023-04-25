@@ -3,13 +3,14 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Registry from "../components/Registry";
+import AuthContext from "../contexts/AuthContext";
 
 export default function HomePage(){
 
     const [saldo, setSaldo] = useState(0);
     const navigate = useNavigate();
     const [transactions, setTransactions] = useState([]);
-    const { auth } = useContext(AuthContext);
+    const { auth, login } = useContext(AuthContext);
     const [ positivos, setPositivos] = useState("");
     const [ negativos, setNegativos] = useState("");
 
@@ -28,7 +29,10 @@ export default function HomePage(){
         )
     }, [])
 
-    
+    function logout(){
+        login({});
+        navigate("/");
+    }
     
     function soma (positivos,negativos){
         let soma = 0;
@@ -45,7 +49,7 @@ export default function HomePage(){
         <Container>
         <NewEntryHeader>
             <h2>Olá, {auth.nome}</h2>
-            <ion-icon name="exit-outline"></ion-icon>
+            <ion-icon name="exit-outline" onClick={logout}></ion-icon>
         </NewEntryHeader>
         <BigContainer>
             <RegistryContainer>
