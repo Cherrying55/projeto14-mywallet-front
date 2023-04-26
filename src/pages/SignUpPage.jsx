@@ -15,6 +15,7 @@ export default function SignUpPage(){
         if(dados.confirmpassword === dados.password){
             let dadossemconfirm = {...dados};
             delete dadossemconfirm.confirmpassword;
+            console.log(dadossemconfirm);
             axios.post("https://mywallet-api-b8n4.onrender.com/sign-up", dadossemconfirm)
         .then(
             (res) => {
@@ -42,7 +43,7 @@ export default function SignUpPage(){
         <Container>
         <h1>MyWallet</h1>
         <form onSubmit={fazerlogin}>
-            <input data-test="name" type="text" name="name" placeholder="Nome" onChange={alterardados} />
+            <input data-test="name" type="text" name="nome" placeholder="Nome" onChange={alterardados} />
             <input data-test="email" type="email" name="email" placeholder="E-mail" onChange={alterardados} />
             <input data-test="password" type="password" name="password" placeholder="Senha" onChange={alterardados} />
             <input data-test="conf-password" type="password" name="confirmpassword" placeholder="Confirme a senha" onChange={alterardados} />

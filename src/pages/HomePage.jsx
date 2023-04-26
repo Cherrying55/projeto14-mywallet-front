@@ -58,17 +58,27 @@ export default function HomePage(){
             <ion-icon name="exit-outline" onClick={logout}></ion-icon>
         </NewEntryHeader>
         <BigContainer>
+            {transactions.length > 0 ?
+            <>
             <RegistryContainer>
                 {
                     transactions.map(
                         (t) => <Registry day={t.day} description={t.description} value={t.value} type={t.type} />
                     )
+                
+                
                 }
             </RegistryContainer>
             <Saldo resultado={soma(positivos,negativos)}>
-                <h3>SALDO</h3>
-                <span data-test="total-amount">{soma(positivos,negativos)}</span>
-            </Saldo>
+            <h3>SALDO</h3>
+            <span data-test="total-amount">{soma(positivos,negativos)}</span>
+        </Saldo>
+        </>
+            :
+            <NoTransactions>Não há registros de entrada ou saída</NoTransactions>
+            }
+            
+            
         </BigContainer>
         <ButtonContainer>
             <button data-test="new-income" onClick={() => {navigate("/novatransaçao/entrada")}}>
@@ -202,15 +212,15 @@ display: flex;
         width: 100%;
 `
 
-/*
-Olá auth.name
-
-{auth.registry.map(
-                (r) => {
-                    return(
-                        <Registry day={r.day} description={r.description} value={r.value} type={r.type} />
-                    )
-                }
-            )}
-
-*/
+const NoTransactions = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+height: 100%;
+width: 100%;
+color: #868686;
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+`

@@ -14,7 +14,7 @@ export default function Registry(props){
 }
 
 const Valor = styled.h1`
-color: ${props => props.type === "entry" ? "green" : "red" };
+color: ${props => props.type === "entrada" ? "green" : "red" };
 font-family: 'Raleway';
 font-style: normal;
 font-weight: 400;
