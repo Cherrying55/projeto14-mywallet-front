@@ -81,11 +81,11 @@ export default function HomePage(){
             
         </BigContainer>
         <ButtonContainer>
-            <button data-test="new-income" onClick={() => {navigate("/novatransaçao/entrada")}}>
+            <button data-test="new-income" onClick={() => {navigate("/nova-transacao/entrada")}}>
                 <ion-icon name="add-circle-outline"></ion-icon>
                 <h4>Nova entrada</h4>
             </button>
-            <button data-test="new-expense" onClick={() => {navigate("/novatransaçao/saida")}}>
+            <button data-test="new-expense" onClick={() => {navigate("/nova-transacao/saida")}}>
                 <ion-icon name="remove-circle-outline"></ion-icon>
                 <h4>Nova saída</h4>
             </button>
