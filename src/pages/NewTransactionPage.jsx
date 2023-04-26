@@ -37,7 +37,7 @@ export default function NewTransactionPage(){
             }
         )
         .catch(
-            () => {setLoading(false)}
+            (err) => {alert(err.response.status);setLoading(false)}
         )
     }
     return(

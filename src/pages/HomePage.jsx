@@ -31,7 +31,7 @@ export default function HomePage(){
             }
         )
         .catch(
-            (err) =>  {alert("erro!")}
+            (err) =>  {alert(err.response.status)}
         )
     }, [])
 

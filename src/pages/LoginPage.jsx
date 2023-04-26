@@ -29,7 +29,7 @@ export default function LoginPage(){
             }
         )
         .catch(
-            () => {setLoading(false)}
+            (err) => {alert(err.response.status);setLoading(false)}
         )
     }
 

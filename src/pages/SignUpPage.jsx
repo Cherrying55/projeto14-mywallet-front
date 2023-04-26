@@ -23,7 +23,7 @@ export default function SignUpPage(){
             }
         )
         .catch(
-            () => {setLoading(false)}
+            (err) => {if(err.response.status === 409){alert("Email existente, por favor escolha outro")};setLoading(false);}
         )
         }
         else{
