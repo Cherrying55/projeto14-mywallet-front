@@ -10,7 +10,7 @@ export default function LoginPage(){
     const navigate = useNavigate();
     const { auth, login } = useContext(AuthContext);
 
-    if(auth.token){
+    if(auth && auth.token){
         navigate("/home")
     }
 
